@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import {ToastContainer, toast} from 'react-toastify';
 
-export default function register() {
+export default function Register() {
              const[values,setValues]=useState({
                email:'',
                password:''
@@ -17,7 +17,7 @@ export default function register() {
     <form onSubmit={(e)=>handleSubmit(e)}> 
       <div>
         <label htmlFor='email'>Email</label>
-        <input type='email' name='email' id='email' placeholder="Email"  onChnage={(e)=>setValues({ ...values, [e.target.name]: e.target.value })}
+        <input type='email' name='email' id='email' placeholder="Email"  onChange={(e)=>setValues({ ...values, [e.target.name]: e.target.value })}
         />
         </div>
         <div> 
