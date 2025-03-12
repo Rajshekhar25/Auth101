@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import {ToastContainer, toast} from 'react-toastify';
 
 export default function register() {
   return (
@@ -20,6 +21,7 @@ export default function register() {
         
         </span>
          </form>
+         <ToastContainer></ToastContainer>
         </div>
   );
 }
