@@ -37,7 +37,7 @@ export default function Login() {
            type='password' name='password' id='password' placeholder="Password"  onChange={(e)=>setValues({ ...values, [e.target.name]: e.target.value })}/>
         </div>
         
-        <button type='submit'>Register</button>
+        <button type='submit'>Login</button>
         <span>Don't have an account? <Link to="/register">Register</Link>
         
         </span>
