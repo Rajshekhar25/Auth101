@@ -15,6 +15,11 @@ export default function Register() {
                 const {data} = await axios.post('http://localhost:4000/register',{
                    ...values,
                   });
+                  console.log(data);
+                  if(data){
+                    if(data.errors){}
+                    else{}
+                  }
           
               }catch(error){
                 console.log(error);
