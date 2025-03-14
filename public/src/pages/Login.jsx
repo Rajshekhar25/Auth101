@@ -1,26 +1,56 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {ToastContainer, toast} from 'react-toastify';
 import axios from 'axios';
 
 export default function Login() {
-             const[values,setValues]=useState({
-               email:'',
-               password:''
-             });
-  
-   const handleSubmit = async (e)=>{    
-    e.preventDefault();
-    try{
-      const {data} = await axios.post('http://localhost:4000/register',{
-         ...values,
-        });
+  const navigate=useNavigate();
+  const[values,setValues]=useState({
+    email:'',
+    password:''
+  });
 
-    }catch(error){
-      console.log(error);
-    }
-   };
+  const generateError=(err)=>{               //verify  the order of the curly braces
+   console.log("Toast error triggered:", err); // ✅ Debug log
+   toast.error(err,
+   {position:"bottom-right",
+     autoClose:5000,}); }      //This autocloses the toast after 5 seconds
+
+  const handleSubmit = async (e)=>{    
+   e.preventDefault();
    
+console.log("handleSubmit triggered"); // ✅ Debug log
+if (!values.email || !values.password) {
+generateError("All fields are required!");
+return;
+  }
+      
+     
+     try{
+     const {data} = await axios.post('http://localhost:4000/register',{
+        ...values,
+       },{
+       withCredentials:true
+        });
+        console.log("API Response:", data); // ✅ Log full backend response
+
+       
+       if(data){
+         if(data.errors){
+           const {email,password}=data.errors;
+           console.log("Error fields:", data.errors); // ✅ Debugging API errors
+           if(email) generateError(email);
+           else if(password) generateError(password);
+         }
+         else{
+           navigate("/");
+         }
+       }
+
+   }catch(error){
+     console.log(error);
+   }
+  };     
    
   return (
     <div className="container">
