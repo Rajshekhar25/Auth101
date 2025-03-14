@@ -24,6 +24,7 @@ const handleErrors= (err)=>{
             errors[properties.path]=properties.message;
         });
     }
+    return errors;
 };
 
 module.exports.register=async (req, res, next) => {
@@ -45,19 +46,19 @@ module.exports.register=async (req, res, next) => {
 // };
 
 module.exports.login = async (req, res, next) => {
-    try {
-        const { email, password } = req.body;
-        const user = await UserModel.findOne({ email });
+    // try {
+    //     const { email, password } = req.body;
+    //     const user = await UserModel.findOne({ email });
 
-        if (!user) {
-            return res.status(400).json({ message: "User not found" });
-        }
+    //     if (!user) {
+    //         return res.status(400).json({ message: "User not found" });
+    //     }
 
-        res.status(200).json({ user: user._id, message: "Login successful" });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ error: "Internal Server Error" });
-    }
+    //     res.status(200).json({ user: user._id, message: "Login successful" });
+    // } catch (err) {
+    //     console.log(err);
+    //     res.status(500).json({ error: "Internal Server Error" });
+    // }
 };
 
 
