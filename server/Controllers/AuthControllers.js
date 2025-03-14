@@ -36,14 +36,13 @@ module.exports.register=async (req, res, next) => {
 
         res.status(201).json({user:user._id,created:true});
     } catch (err) {
-        console.log(err);        
+        console.log(err); 
+        const errors = handleErrors(err);
+        res.json({errors,created:false});       
     }
 };
 
 
-// module.exports.login = async (req, res, next) => {
-
-// };
 
 module.exports.login = async (req, res, next) => {
     // try {
