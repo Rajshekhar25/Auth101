@@ -9,24 +9,35 @@ export default function Register() {
                password:''
              });
 
-             const generateError=(err)=>
+             const generateError=(err)=>{               //verify  the order of the curly braces
+              console.log("Toast error triggered:", err); // ✅ Debug log
               toast.error(err,
               {position:"bottom-right",
-                autoClose:5000,});       //This autocloses the toast after 5 seconds
+                autoClose:5000,}); }      //This autocloses the toast after 5 seconds
   
              const handleSubmit = async (e)=>{    
               e.preventDefault();
-              try{
+              
+  console.log("handleSubmit triggered"); // ✅ Debug log
+           if (!values.email || !values.password) {
+      generateError("All fields are required!");
+          return;
+             }
+                 
+                
+                try{
                 const {data} = await axios.post('http://localhost:4000/register',{
                    ...values,
                   },{
                   withCredentials:true
                    });
+                   console.log("API Response:", data); // ✅ Log full backend response
 
                   
                   if(data){
                     if(data.errors){
                       const {email,password}=data.errors;
+                      console.log("Error fields:", data.errors); // ✅ Debugging API errors
                       if(email) generateError(email);
                       else if(password) generateError(password);
                     }
