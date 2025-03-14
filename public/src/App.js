@@ -1,24 +1,51 @@
 import React from 'react'
-import {BrowserRouter,Routes,Route } from "react-router-dom";
-import Secret from "./pages/Secret";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-
-
-
+import Secret from "./pages/Secret";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
   return (
-    <BrowserRouter>
-    <Routes>
-     <Route exact path="/register" element={<Register/>}/>
-     <Route exact path="/login" element={<Login/>}/>
-     <Route exact path="/" element={<Secret/>}/>
-    </Routes>
-    
-    
-    </BrowserRouter>
-   
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/register" element={<Register />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/" element={<Secret />} />
+        </Routes>
+      </BrowserRouter>
+      <ToastContainer position="bottom-right" autoClose={5000} />
+    </>
   );
 }
+
+
+
+
+// import React from 'react'
+// import {BrowserRouter,Routes,Route } from "react-router-dom";
+
+// import Login from "./pages/Login";
+// import Register from "./pages/Register";
+// import Secret from "./pages/Secret";
+// import 'react-toastify/dist/ReactToastify.css';
+
+// export default function App() {
+//   return (
+    
+//     <BrowserRouter>
+//     <Routes>
+//      <Route exact path="/register" element={<Register/>}/>
+//      <Route exact path="/login" element={<Login/>}/>
+//      <Route exact path="/" element={<Secret/>}/>
+//     </Routes>
+    
+    
+//     </BrowserRouter>
+            
+//   );
+// }
 
