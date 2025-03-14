@@ -8,6 +8,11 @@ export default function Register() {
                email:'',
                password:''
              });
+
+             const generateError=(err)=>
+              toast.error(err,
+              {position:"bottom-right",
+                autoClose:5000,});       //This autocloses the toast after 5 seconds
   
              const handleSubmit = async (e)=>{    
               e.preventDefault();
@@ -17,9 +22,12 @@ export default function Register() {
                   },{
                   withCredentials:true
                    });
-                  console.log(data);
+
+                  
                   if(data){
-                    if(data.errors){}
+                    if(data.errors){
+                      
+                    }
                     else{}
                   }
           
