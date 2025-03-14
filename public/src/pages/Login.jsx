@@ -10,7 +10,7 @@ export default function Login() {
     password:''
   });
 
-  const generateError=(err)=>{               //verify  the order of the curly braces
+  const generateError=(err)=>{              
    console.log("Toast error triggered:", err); // ✅ Debug log
    toast.error(err,
    {position:"bottom-right",
