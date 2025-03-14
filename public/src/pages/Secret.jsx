@@ -8,7 +8,7 @@ export default function Secret() {
    
   const navigate=useNavigate();
     
-  const [cookies, setCookie ,removeCookie]=useCookies(['token']);
+  const [cookies, setCookie ,removeCookie]=useCookies([]);
   useEffect(()=>{
     const verifyUser = async()=>{
       if (!cookies.jwt){
@@ -22,7 +22,7 @@ export default function Secret() {
           if(!data.status){
             removeCookie('jwt');
             navigate("/login");
-          }  else toast.success(`Welcome back, ${data.user}!`, {theme:"dark"});
+          }  else toast(`Welcome back, ${data.user}!`, {theme:"dark"});
 
         }
 
@@ -37,10 +37,13 @@ export default function Secret() {
   };
 
     return (
+      <>
    <div className="private">
     <h1> Super Secret Page</h1>
     <button onClick={logOut}>Log Out</button>
-    <ToastContainer />
+    
    </div>
+   <ToastContainer />
+   </>
   );
 }
