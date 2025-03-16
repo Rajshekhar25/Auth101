@@ -21,7 +21,7 @@ app.use(cookieParser());
 // Use correct route
 app.use("/", authRoutes);
 
-mongoose.connect("mongodb+srv://Rajshekhar25:t7ThRelmPUn4vi8u@cluster0.mnk30.mongodb.net/jwt", {
+mongoose.connect("<your Mongo_DB connection string>", {
     serverSelectionTimeoutMS: 5000
 }).then(() => {
     console.log("Connected to MongoDB");
